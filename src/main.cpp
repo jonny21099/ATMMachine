@@ -18,15 +18,24 @@ std::string start(){
 int main(){
 	
 	std::string option = start();
-	Users currentUser();
+	Users currentUser;
 	//Check
 	if (option == 'l'){
+		
+		currentUser.setUser();
+		currentUser.loginUser();
+	} 
 
-	} else if (option == 'c'){
+	else if (option == 'c'){
+		currentUser.setUser();
+		currentUser.registerUser();
+	} 
 
-	} else if (option == 'q'){
+	else if (option == 'q'){
 		return 0;
-	} else {
+	} 
+
+	else {
 		std::cout << "Please try again, and enter a valid input!" << std::endl;
 		main();
 	}
