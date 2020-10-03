@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "../lib/include/Users.h"
 
 std::string start(){
 	std::string option;
@@ -14,29 +15,52 @@ std::string start(){
 	return option;
 }
 
-
 int main(){
-	
+	std::string login;
+	std::string password;
+	bool exist;
 	std::string option = start();
-	Users currentUser;
-	//Check
-	if (option == 'l'){
-		
-		currentUser.setUser();
-		currentUser.loginUser();
+	//user wants to login
+	if (option == "l"){
+		Users currentUser;
+		std::cout << "Please enter login" << std::endl;
+		std::cin >> login;
+		std::cout << "Please enter password: " << std::endl;
+		std::cin >> password;
+		currentUser.setUser(login, password);
+		exist = currentUser.checkUser();
+		if (exist == true){
+			currentUser.loginUser();
+		}
+		else {
+			std::cout << "The user you entered doesn't exist" << std::endl;
+		}
 	} 
-
-	else if (option == 'c'){
-		currentUser.setUser();
-		currentUser.registerUser();
+	//user wants to register
+	else if (option == "c"){
+		Users currentUser;
+		std::cout << "Please enter desired login" << std::endl;
+		std::cin >> login;
+		std::cout << "Please enter desired password" << std::endl;
+		std::cin >> password;
+		currentUser.setUser(login, password);
+		exist = currentUser.checkUser();
+		if (exist == false){
+			currentUser.registerUser();
+		}
+		else {
+			std::cout << "This account is registered" << std::endl;	
+		}
 	} 
-
-	else if (option == 'q'){
+	//user wants to quit
+	else if (option == "q"){
 		return 0;
 	} 
-
+	//invalid input
 	else {
 		std::cout << "Please try again, and enter a valid input!" << std::endl;
 		main();
 	}
+
+
 }
