@@ -95,6 +95,7 @@ int main(){
 			if (exist == false){
 				currentUser.registerUser();
 				std::cout << "Registered\n" << std::endl;
+				return 0;
 			}
 			else {
 				std::cout << "This account is registered" << std::endl;	
@@ -129,7 +130,7 @@ int main(){
 		}
 		else if (bankingOption == "q"){
 			std::cout << "Thanks for using ATM, come again!" << std::endl;
-			return 0;
+			break;
 		}
 		else{
 			std::cout << "Please enter a valid input" << std::endl;
