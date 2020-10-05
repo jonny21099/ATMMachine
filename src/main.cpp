@@ -11,7 +11,6 @@ std::string start(){
 
 	//Remember user input
 	std::cin >> option;
-
 	return option;
 }
 
@@ -20,10 +19,12 @@ float deposit(float &amount){
 	float depositAmount;
 	std::cout << "Amount of deposit: $";
 	std::cin >> depositAmount;
+	//if entered a negative value
 	if (depositAmount < 0){
 		std::cout << "That is not possible!" << std::endl;
 		return amount;
 	}
+	//otherwise add it to amount
 	else {
 		amount = amount + depositAmount;
 		return amount;
@@ -35,15 +36,16 @@ float withdraw(float &amount){
 	float withdrawAmount;
 	std::cout << "Amount to withdraw: $";
 	std::cin >> withdrawAmount;
+	//if entered a negative value
 	if (withdrawAmount < 0){
 		std::cout << "That is not possible!" << std::endl;
 		return amount;
 	}
+	//otherwise subtract it from amount
 	else{
 		amount = amount - withdrawAmount;
 		return amount;
 	}
-
 }
 
 //request balance
@@ -51,6 +53,7 @@ void request(float &amount){
 	std::cout << "Your balance is $" << amount << std::endl; 
 }
 
+//user interaction menu
 void menu(){
 	std::cout << "d -> Deposit Money" << std::endl;
 	std::cout << "w -> Withdraw Money" << std::endl;
@@ -65,6 +68,7 @@ int main(){
 	bool exist;
 	bool execute = true;
 	float amount;
+	//create Users object
 	Users currentUser;
 	while(execute){
 		std::string option = start();
@@ -119,22 +123,28 @@ int main(){
 		std::cout << '\n';
 		menu();
 		std::cin >> bankingOption;
+		//deposit
 		if (bankingOption == "d"){
 			deposit(amount);
 		}
+		//withdraw
 		else if (bankingOption == "w"){
 			withdraw(amount);
 		}
+		//request balance
 		else if (bankingOption == "r"){
 			request(amount);
 		}
+		//quit
 		else if (bankingOption == "q"){
 			std::cout << "Thanks for using ATM, come again!" << std::endl;
 			break;
 		}
+		//invalid input
 		else{
 			std::cout << "Please enter a valid input" << std::endl;
 		}
 	}
+	//save changes to txt
 	currentUser.saveChanges(amount);
 }
