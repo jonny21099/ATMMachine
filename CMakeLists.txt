@@ -5,4 +5,4 @@ set(CMAKE_BUILD_TYPE Debug)
 set (CMAKE_CXX_STANDARD 11)
 include_directories(lib/include/)
 
-add_executable( main src/main.cpp src/Users.cpp lib/include/Users.h)
+add_executable( ATMMachine src/main.cpp src/Users.cpp lib/include/Users.h)

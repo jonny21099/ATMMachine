@@ -102,7 +102,7 @@ int main(){
 		} 
 		//user wants to quit
 		else if (option == "q"){
-			break;
+			return 0;
 		} 
 		//invalid input
 		else {
@@ -129,7 +129,7 @@ int main(){
 		}
 		else if (bankingOption == "q"){
 			std::cout << "Thanks for using ATM, come again!" << std::endl;
-			break;
+			return 0;
 		}
 		else{
 			std::cout << "Please enter a valid input" << std::endl;
