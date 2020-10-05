@@ -14,19 +14,13 @@ bool Users::checkUser(){
 	std::string user;
 	std::string pass;
 	std::fstream outfile;
-	outfile.open("accounts.txt", std::ios::out | std::ios::in);
+	outfile.open("accounts.txt", std::fstream::in|std::fstream::out);
 	if (outfile.is_open()){
 		while (std::getline(outfile,user)){
 			std::getline(outfile,pass);
 			if (user == login && pass == password){
 				return true;
-			}
-			else if (user == "test" && pass == "pass"){
-				std::cout << "it worked" << std::endl;
-			}
-			else{
-				std::cout << "didn't work as intendded" << std::endl;
-			}
+			}	
 		}
 		outfile.close();
 		return false;
@@ -39,7 +33,12 @@ bool Users::checkUser(){
 }
 
 void Users::registerUser(){
+	std::ofstream editfile;
+	editfile.open("accounts.txt", std::ios_base::app);
+	editfile << login << '\n';
+	editfile << password << '\n';
 }
 
 void Users::loginUser(){
+	//login and retrieve atm information
 }
