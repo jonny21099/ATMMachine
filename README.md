@@ -3,7 +3,7 @@ A bash ATM machine
 
 ### About
 This ATM machine stores all data on textfiles.
-Program inspired by a programming assignment found online on https://www.stat.ubc.ca/~ruben/WebPage2/Phase1.doc.
+Idea inspired by a programming assignment found online on https://www.stat.ubc.ca/~ruben/WebPage2/Phase1.doc. 
 
 ### Install
 1. Download directory
