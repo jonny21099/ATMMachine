@@ -4,6 +4,7 @@
 #include <fstream>
 
 Users::Users(){}
+//set user with the provided login and password
 void Users::setUser(std::string a, std::string b){
 	login = a;
 	password = b;
@@ -33,6 +34,7 @@ bool Users::checkUser(){
 	return false;
 }
 
+//opens the text file for writing and add the login password and base amount to text
 void Users::registerUser(){
 	std::ofstream editfile;
 	editfile.open("accounts.txt", std::ios_base::app);
