@@ -44,12 +44,9 @@ void Users::registerUser(){
 	editfile.close();
 }
 
-int Users::loginUser(){
-	//login and retrieve atm information
-	std::ifstream readfile;
-	readfile.open("accounts.txt");
+float Users::loginUser(){
+	//return amount in user account
 	std::cout << "\nYou have successfully logged in" << std::endl;
-	readfile.close();
 	return std::stof(amount);
 }
 
@@ -60,24 +57,30 @@ void Users::saveChanges(float amount){
 	std::string pass;
 	std::string temp;
 	std::string newamount;
+	//convert amount to string type for text
 	newamount = std::to_string(amount);
+	//copy all content into temp except new value
 	infile.open("accounts.txt");
 	outfile.open("temp.txt", std::ios_base::app);
+	//get username password and amount
 	while (std::getline(infile, user)){
 		std::getline(infile, pass);
 		std::getline(infile, temp);
-		//if username and password found, return true;
+		//copy to temp username and password
 		outfile << user << '\n';
 		outfile << pass << '\n';
+		//if the login and password is the same as user change amount
 		if (user == login && pass == password){
 			outfile << amount << '\n';
 		}
+		//otherwise amount is same
 		else {
 			outfile << temp << '\n';
 		}
 	}
 	infile.close();
 	outfile.close();
+	//remove the old file and rename new file 
 	remove("accounts.txt");
 	rename("temp.txt","accounts.txt");
 }

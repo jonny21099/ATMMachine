@@ -6,7 +6,7 @@ public:
 	void setUser(std::string a, std::string b);
 	bool checkUser();
 	void registerUser();
-	int loginUser();
+	float loginUser();
 	void saveChanges(float amount);
 
 private:
